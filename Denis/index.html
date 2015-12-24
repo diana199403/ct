@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Компьютерные технологии</title>
+    <!--<link rel="icon" type="image/x-icon" href="images/icon.ico">-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+<body>
+	<table id="table"></table>
+    <input id="button" type="button" value="Найти" onClick="search()">
+</body>
+</html>
+<script>
+    var area = document.getElementById("table");
+    var rowsCount = 10;
+    var colCount = 7;
+    for (var i = 0; i<rowsCount; i++){
+        var tr = document.createElement('tr');
+        area.appendChild(tr);
+        for (var j = 0; j<colCount; j++){
+            var td = document.createElement('td');
+            tr.appendChild(td);
+            td.innerHTML = getRandomInt(1,100);
+            td.style.border = "1px";
+            td.style.borderStyle = "solid";
+            td.style.width = "70px";
+            td.style.background = "#fff";
+            //td.addEventListener("click", search);
+        }}
+    function getRandomInt(min,max){
+        return Math.floor(Math.random()*(max-min+1))+min;
+    }
+function search(){
+    var area1 = document.getElementById("table");
+    for (var i = 0; i<area1.rows.length; i++){
+        for (var j = 0; j<area1.rows[0].cells.length; j++){
+            var pos = area1.rows[i].cells[j];
+            var number = pos.innerHTML;
+            var cor = Math.sqrt(number);
+            var nat = cor - Math.round(cor);
+            if (nat == 0){
+                pos.style.backgroundColor = "yellow";
+            } else
+                pos.style.backgroundColor = "violet";
+        }
+    }
+}
+</script>
